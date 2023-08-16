@@ -6,7 +6,13 @@ function App() {
     
     return (
         <div className="App">
-            <textarea id="editor"></textarea>
+            <textarea 
+                id="editor" 
+                onChange = { ( event ) => { 
+                    setText(event.tatget.value) 
+                }}
+                value = { text }
+              ></textarea>
             <div id="preview"></div>
         </div>
     );
