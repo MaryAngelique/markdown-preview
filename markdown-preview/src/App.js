@@ -3,8 +3,32 @@ import { marked } from "marked";
 import { useState } from "react";
 
 function App() {
-    const [ text, setText ] = useState("");
+    const [ text, setText ] = useState(`
+    # H1
+    ## H2
+    [title](https://www.example.com)
+    \`code\`
+    \`\`\`
+    {
+        "fistName": "John",
+        "lastName": "Doe",
+        "age": 25
+    }
+    \`\`\`
+
+    - First item
+    - Second item
+    - Third item
+
+    > blockquote
+
+    ![alt text](image.jpeg)
+    ** bold text**
+    `);
     
+    marked.setOptions({
+      breaks: true
+    })
     return (
         <div className="App">
             <textarea 
@@ -14,7 +38,12 @@ function App() {
                 }}
                 value = { text }
               ></textarea>
-            <div id="preview">{ text }</div>
+            <div 
+                id="preview"
+                dangerouslySetInnerHTML={{ 
+                  __html: marked(text),
+                }}
+            ></div>
         </div>
     );
 }
