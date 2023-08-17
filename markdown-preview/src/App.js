@@ -9,11 +9,11 @@ function App() {
             <textarea 
                 id="editor" 
                 onChange = { ( event ) => { 
-                    setText(event.tatget.value) 
+                    setText(event.target.value) 
                 }}
                 value = { text }
               ></textarea>
-            <div id="preview"></div>
+            <div id="preview">{ text }</div>
         </div>
     );
 }
